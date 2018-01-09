@@ -108,7 +108,7 @@ $myfile = fopen("log.txt","w+") or die("Unable to open file!"); //設定一個lo
  }
  //回傳給line server
  $header[] = "Content-Type: application/json";
- $header[] = "Authorization: Bearer n4mZIQp9UqWXhCEgIg1fLmyjUeDMgCe/bF+4EOBDZ7fGscOgNGFsHTr3fGco/E7A5hq7A7jiDszSCk/j3pVVPbx7nf0E+FKe5jX6syQGOxO7kwp5lmZ3zRES1qxceq/N+/E9Qy5gSDbBx56l8sScTwdB04t89/1O/w1cDnyilFU=";
+ $header[] = "Authorization: Bearer h9fxuK5CCnKYJn6e24KGaDxGKp/9EjKy1TkGjuL9DU9WiMtx6yaIcKCtT63sXfpWeRk6UbEZW3KZPQ1u9nTOGbGkW1f4X8EhUKAGK8PhH0E/6u5nyGoBqj4ftD5+xhqZve+mKdCP1DSwRwUK0eJ9bwdB04t89/1O/w1cDnyilFU=";
  $ch = curl_init($line_server_url);                                                                      
  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response));                                                                  
