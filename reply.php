@@ -14,7 +14,7 @@ $json_str = file_get_contents('php://input'); //接收REQUEST的BODY
 					)
 				)
 		);
- $myfile3 = fopen("log.txt","w+") or die("Unable to open file!"); //設定一個log.txt 用來印訊息
+ $myfile3 = fopen("replylog.txt","w+") or die("Unable to open file!"); //設定一個log.txt 用來印訊息
  fwrite($myfile3, "\xEF\xBB\xBF".json_encode($response)); //在字串前加入\xEF\xBB\xBF轉成utf8格式
  fclose($myfile3);
  //回傳給line server
