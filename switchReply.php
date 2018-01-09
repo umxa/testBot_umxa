@@ -44,7 +44,7 @@
 				)
 			);
         		break;
-case "location":
+		 case "location":
 			$line_server_url = 'https://api.line.me/v2/bot/message/reply';
         		$response = array (
 				"replyToken" => $sender_replyToken,
