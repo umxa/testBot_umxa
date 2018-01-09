@@ -3,14 +3,14 @@ $json_str = file_get_contents('php://input'); //接收REQUEST的BODY
  $json_obj = json_decode($json_str); //轉JSON格式
  //產生回傳給line server的格式
  $sender_userid = $json_obj->events[0]->source->userId;
- $sender_txt = $json_obj->events[0]->message->text;
+ $reply_sender_txt = $json_obj->events[0]->message->text;
  $sender_replyToken = $json_obj->events[0]->replyToken;
  $response = array (
 				"replyToken" => $sender_replyToken,
 				"messages" => array (
 					array (
 						"type" => "text",
-						"text" => "Hello, YOU SAY ".$sender_txt
+						"text" => "Hello, YOU SAY ".$reply_sender_txt
 					)
 				)
 		);
