@@ -14,9 +14,9 @@ $json_str = file_get_contents('php://input'); //接收REQUEST的BODY
 					)
 				)
 		);
- $myfile = fopen("log.txt","w+") or die("Unable to open file!"); //設定一個log.txt 用來印訊息
- fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前加入\xEF\xBB\xBF轉成utf8格式
- fclose($myfile);
+ $myfile3 = fopen("log.txt","w+") or die("Unable to open file!"); //設定一個log.txt 用來印訊息
+ fwrite($myfile3, "\xEF\xBB\xBF".json_encode($response)); //在字串前加入\xEF\xBB\xBF轉成utf8格式
+ fclose($myfile3);
  //回傳給line server
  $header[] = "Content-Type: application/json";
  $header[] = "Authorization: Bearer Ge6chAnpmdNZyieCLYHD9nnqDTF6rB6oYp6saZMj6kw/aj7VbDEtpPOALO58ueXseRk6UbEZW3KZPQ1u9nTOGbGkW1f4X8EhUKAGK8PhH0GDqm7KzwkoOvVjLXIAuDKVEjHseX7jHNHHqXm+JYxyigdB04t89/1O/w1cDnyilFU=";
