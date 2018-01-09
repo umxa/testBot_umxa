@@ -23,6 +23,46 @@ $myfile = fopen("log.txt","w+") or die("Unable to open file!"); //設定一個lo
 $imagefile = fopen($objID.".jpeg", "w+") or die("Unable to open file!"); //設定一個log.txt，用來印訊息
 			fwrite($imagefile, $json_content); 
 			fclose($imagefile);
+$header[] = "Content-Type: application/json";
+			$post_data = array (
+				"requests" => array (
+						array (
+							"image" => array (
+								"source" => array (
+									"imageUri" => "https://sporzfy.com/chtChatBot/testBot_umxa/".$objID.".jpeg"
+								)
+							),
+							"features" => array (
+								array (
+									"type" => "TEXT_DETECTION",
+									"maxResults" => 1
+								)
+							)
+						)
+					)
+			);
+			$ch = curl_init('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCiyGiCfjzzPR1JS8PrAxcsQWHdbycVwmg');                                                                      
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $header);                                                                                                   
+			$result = json_decode(curl_exec($ch));
+			/*$result_ary = mb_split("\n",$result -> responses[0] -> fullTextAnnotation -> text);
+			$ans_txt = "這張發票沒用了，你又製造了一張垃圾";
+			foreach ($result_ary as $val) {
+				if($val == "AG-26272435"){
+					$ans_txt = "恭喜您中獎啦，快分紅!!";
+				}
+			}*/
+			$response = array (
+				"to" => $sender_userid,
+				"messages" => array (
+					array (
+						"type" => "text",
+						"text" => $result -> responses[0] -> fullTextAnnotation -> text
+					)
+				)
+			);
  //回傳給line server
  $header[] = "Content-Type: application/json";
  $header[] = "Authorization: Bearer h9fxuK5CCnKYJn6e24KGaDxGKp/9EjKy1TkGjuL9DU9WiMtx6yaIcKCtT63sXfpWeRk6UbEZW3KZPQ1u9nTOGbGkW1f4X8EhUKAGK8PhH0E/6u5nyGoBqj4ftD5+xhqZve+mKdCP1DSwRwUK0eJ9bwdB04t89/1O/w1cDnyilFU=";
